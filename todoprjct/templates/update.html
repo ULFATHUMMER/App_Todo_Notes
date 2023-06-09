@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow" style="margin:20px;align:center;">
+              <div class="card-header">
+                <h4 style="background-color:ash">Update task</h4>
+              </div>
+              <div class="card-body">
+                <form method="post" style="padding:15px;">
+                {% csrf_token %}
+                {{form.as_p}}
+                    <input class="btn btn-danger" type="submit">
+                </form>
+              </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

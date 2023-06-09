@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- container-fluid-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>TODO</h1>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- container-->
+<div class="container">
+    <div class="row">
+        <!-- first 6 colomn -->
+        <div class="col-md-6">
+        <form method="post" class="p-3 shadow"  style="margin:20px;">
+        {% csrf_token %}
+            <div class="form-group"style="margin:10px;" >
+                <input type="text" class="form-control" name="name" placeholder="Enter task name">
+            </div>
+            <div class="form-group"style="margin:10px;">
+                <input type="number" class="form-control" name="priority" placeholder="Enter task priority">
+
+            </div>
+            <div class="form-group"style="margin:10px;">
+                <input type="date" class="form-control" name="date" placeholder="Enter date">
+
+            </div>
+            <div class="form-group"style="margin:10px;">
+                <input type="submit" class="btn btn-success">
+            </div>
+       </form>
+        </div>
+        <!-- first 6 col end-->
+        <!-- 2nd 6 col start-->
+        <div class="col-md-6">
+            <h4>Task to be completed</h4>
+            {%for i in task1%}
+
+            <div class="card shadow" >
+                <div class="card-body">
+                        <h5 class="card-title">{{i.name}}</h5>
+                        <p class="card-text">{{i.priority}}</p>
+                        <p class="card-text">{{i.date}}</p>
+                        <a href="{% url 'done' i.id %}" class="btn btn-danger">Done</a>
+                        <a href="{% url 'update' i.id %}" class="btn btn-success">Update</a>
+
+                </div>
+            </div>
+            </br>
+            {% endfor %}
+
+        </div>
+        <!-- 2nd 6col end-->
+
+    </div>
+</div>
+{% endblock %}
