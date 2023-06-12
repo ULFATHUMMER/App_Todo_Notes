@@ -21,10 +21,10 @@ from todoapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('',views.add,name='add'),
+    path('',views.add,name='add'),
     path('done/<int:id>/', views.done, name='done'),
     path('update/<int:id>/', views.update, name='update'),
-    path('glvhome/',views.TaskListview.as_view(),name='TaskListview'),
+    #path('glvhome/',views.TaskListview.as_view(),name='TaskListview'),
     path('gdvdetails/<int:pk>/', views.TaskDetailview.as_view(), name='TaskDetailview'),
     path('guvupdate/<int:pk>/', views.TaskUpdateview.as_view(), name='TaskUpdateview'),
     path('gdvdelete/<int:pk>/', views.TaskDeleteview.as_view(), name='TaskDeleteview'),

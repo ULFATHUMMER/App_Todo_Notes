@@ -4,15 +4,15 @@ from django.urls import reverse_lazy
 
 from todoapp.forms import TodoForm
 from todoapp.models import Task
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 
 
 # generic view here.
-class TaskListview(ListView):
-    model = Task
-    template_name = "add_task.html"
-    context_object_name = 'task1'
+#class TaskListview(ListView):
+#    model = Task
+##    template_name = "add_task.html"
+#    context_object_name = 'task1'
 
 class TaskDetailview(DetailView):
     model = Task
@@ -31,19 +31,19 @@ class TaskUpdateview(UpdateView):
 class TaskDeleteview(DeleteView):
     model = Task
     template_name = "delete.html"
-    success_url= reverse_lazy('TaskListview')
+    success_url= reverse_lazy('add')
 
 
 # Create your views here.
-# def add(request):
-#     taskk=Task.objects.all()
-#     if request.method=="POST":
-#         name=request.POST.get('name',)
-#         priority =request.POST.get('priority',)
-#         date = request.POST.get('date',)
-#         task=Task(name=name,priority=priority,date=date)
-#         task.save()
-#     return render(request,"add_task.html",{'task1':taskk})
+def add(request):
+     taskk=Task.objects.all()
+     if request.method=="POST":
+         name=request.POST.get('name',)
+         priority =request.POST.get('priority',)
+         date = request.POST.get('date',)
+         task=Task(name=name,priority=priority,date=date)
+         task.save()
+     return render(request,"add_task.html",{'task1':taskk})
 
 def done(request, id):
     task = Task.objects.get(id=id)
